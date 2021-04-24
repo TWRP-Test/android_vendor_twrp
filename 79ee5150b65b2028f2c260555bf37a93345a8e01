@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f8d213c_0bd0821e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-04-24T21:13:52Z",
+      "side": 1,
+      "message": "Does this need ported from lineage?\nFAILED: out/soong/.bootstrap/soong-lineage-generator/pkg/lineage/soong/generator.a\nGOROOT\u003d\u0027prebuilts/go/linux-x86\u0027 prebuilts/go/linux-x86/pkg/tool/linux_amd64/compile -c 8 -o out/soong/.bootstrap/soong-lineage-generator/pkg/lineage/soong/generator.a.tmp -p lineage/soong/generator -complete -I out/soong/.bootstrap/blueprint-parser/pkg -I out/soong/.bootstrap/blueprint-deptools/pkg -I out/soong/.bootstrap/blueprint-pathtools/pkg -I out/soong/.bootstrap/blueprint-proptools/pkg -I out/soong/.bootstrap/blueprint/pkg -I out/soong/.bootstrap/soong/pkg -I out/soong/.bootstrap/blueprint-bootstrap-bpdoc/pkg -I out/soong/.bootstrap/blueprint-bootstrap/pkg -I out/soong/.bootstrap/soong-android-soongconfig/pkg -I out/soong/.bootstrap/soong-env/pkg -I out/soong/.bootstrap/soong-shared/pkg -I out/soong/.bootstrap/soong-android/pkg -pack vendor/twrp/build/soong/generator/generator.go vendor/twrp/build/soong/generator/variables.go \u0026\u0026 if cmp --quiet out/soong/.bootstrap/soong-lineage-generator/pkg/lineage/soong/generator.a.tmp out/soong/.bootstrap/soong-lineage-generator/pkg/lineage/soong/generator.a; then rm out/soong/.bootstrap/soong-lineage-generator/pkg/lineage/soong/generator.a.tmp; else mv -f out/soong/.bootstrap/soong-lineage-generator/pkg/lineage/soong/generator.a.tmp out/soong/.bootstrap/soong-lineage-generator/pkg/lineage/soong/generator.a; fi\nvendor/twrp/build/soong/generator/generator.go:229:38: undefined: android.PathForSourceRelaxed",
+      "revId": "79ee5150b65b2028f2c260555bf37a93345a8e01",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
