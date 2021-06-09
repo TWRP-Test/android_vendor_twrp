@@ -1,4 +1,11 @@
 // TWRP soong configs
+bootstrap_go_package {
+    name: "soong-twrp",
+    pkgPath: "twrp/soong/android",
+    srcs: [
+        "android/variable.go",
+    ],
+}
 
 bootstrap_go_package {
     name: "soong-twrp-generator",
@@ -47,22 +54,5 @@ cc_library_headers {
     export_generated_headers: ["generated_kernel_includes"],
     vendor_available: true,
     recovery_available: true,
-}
-
-soong_config_module_type {
-    name: "enforce_ab_ota_partition_list",
-    module_type: "cc_defaults",
-    config_namespace: "twrpGlobalVars",
-    bool_variables: ["target_enforce_ab_ota_partition_list"],
-    properties: ["cflags"],
-}
-
-enforce_ab_ota_partition_list {
-    name: "enforce_ab_ota_partition_list_defaults",
-    soong_config_variables: {
-        target_enforce_ab_ota_partition_list: {
-            cflags: ["-DTARGET_ENFORCE_AB_OTA_PARTITION_LIST"],
-        },
-    },
 }
 
