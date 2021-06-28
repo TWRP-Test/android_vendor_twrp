@@ -51,6 +51,24 @@
       "message": "This will conflict with vendor_boot, and likely still won\u0027t load automatically even if it didn\u0027t ",
       "revId": "90097f69e57c8093f06c8d00c440d87d685f2efc",
       "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05cf90e1_f5691ef0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 539
+      },
+      "writtenOn": "2021-06-28T14:47:44Z",
+      "side": 1,
+      "message": "Samsung vendor_boot has kernel modules in the root of vendor_boot ramdisk too",
+      "parentUuid": "e13a3c7e_9d1afc44",
+      "revId": "90097f69e57c8093f06c8d00c440d87d685f2efc",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
     }
   ]
 }
