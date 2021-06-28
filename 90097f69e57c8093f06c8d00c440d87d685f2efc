@@ -86,6 +86,24 @@
       "message": "Yes, and if you put modules in the root of recovery they will conflict with those in vendor boot",
       "revId": "90097f69e57c8093f06c8d00c440d87d685f2efc",
       "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75bca53e_9c85b664",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 539
+      },
+      "writtenOn": "2021-06-28T15:09:19Z",
+      "side": 1,
+      "message": "if stock recovery has them in root and cant boot without them there, using that dirty hack to move them to root?\nuser can flash twrp with vendor_boot from different firmwares and bootloader versions!",
+      "parentUuid": "09cfb8ed_ae079d3e",
+      "revId": "90097f69e57c8093f06c8d00c440d87d685f2efc",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
     }
   ]
 }
