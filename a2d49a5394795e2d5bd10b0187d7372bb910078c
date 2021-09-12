@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "949ddbd4_bfea481a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2021-09-12T16:48:38Z",
+      "side": 1,
+      "message": "As it is, this causes a build error:\nvendor/twrp/config/BoardConfigTWRP.mk:6: error: cannot assign to readonly variable: BOARD_KERNEL_CMDLINE",
+      "revId": "a2d49a5394795e2d5bd10b0187d7372bb910078c",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
