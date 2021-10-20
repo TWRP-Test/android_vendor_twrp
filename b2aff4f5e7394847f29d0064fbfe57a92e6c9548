@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a318f218_5d6dced2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2021-10-20T05:56:50Z",
+      "side": 1,
+      "message": "\u003e Patch Set 1:\n\u003e \n\u003e If this is ready for review, please +1\n\nThank you very much for your guidance, sir",
+      "revId": "b2aff4f5e7394847f29d0064fbfe57a92e6c9548",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
