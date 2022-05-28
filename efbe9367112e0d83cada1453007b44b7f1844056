@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 578885FF0F5B4A9B 1649981819 -0400\npushee ssh://gerrit.twrp.me:29418/android_vendor_twrp\nnonce 1649981819-98D0664F853F22CD37825A951DD08180E85F243C\n\n0000000000000000000000000000000000000000 efbe9367112e0d83cada1453007b44b7f1844056 refs/for/android-12.1%topic\u003dtwrp-depmod_fix\n-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEB9L3iDqpCHq96Rh3V4iF/w9bSpsFAmJYuXsACgkQV4iF/w9b\nSpuZMw//TGjk0mjL86GBXsMwyUzyG6IaWsKXM+unpnyZY8dP/10vmlL4i4XyE7Ks\nUi9DvcI5QITj9nwfNBMpIfUM6Xoyz0AViNH4W1zUU76qVkTmeAcSD87p4GOuJVSQ\nbctuvSoe8TvEEe6pgMsGMgmgaubn8T47TqgrNU/cMUGsrOieCmQh5+4EsVIYGH/Z\nweN/b1wgKdVZImFMy9mvqFWAta5e/W4NQwBIu79gLQVv3IO27Kp7Q9mCnyVCsRD5\n5JyucEmFXISv4Km8cLHpoqM9Tupl63FZ+05mItHyx83/ar5bKGbBn1EhRyxW00xi\n4/O651XDpe9xrXqFLz1NmbwVNTnc4ljhl1mzrzk1u7w56zibge752Bd9n7i7qX7q\nBM+7kwmHc/04UmTvrqcLWDpQkASUlWMpqivxxepJkolH8mWH3v9J0CLA1dAn0N9Y\npsVmoP8Xcqn4BPB3EZ+ULtpdVbq8ILQGE/FeQkZRkRkS11lyjjF5A0xZrnER2nu0\n9RrjkL/VWJwzOwD2/Zdih1FPaLzLBGLfktnG0ID+JkTj62eNjA2fo6XTn2XtoT2z\nSP9D1k1iK0udB82+lqAvm42RLY0MLTbgeu+ff4Zc8xXmlLppV8dGiiwuFzeochZj\n6Qa4HYfAIHO3wDq0zFePz2hXLark0lhwDoWdADUaXzatT0R1uT0\u003d\n\u003dGPA+\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82466e23_99cbb2df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2022-05-28T17:03:14Z",
+      "side": 1,
+      "message": "Should be good to merge",
+      "revId": "efbe9367112e0d83cada1453007b44b7f1844056",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
 }
