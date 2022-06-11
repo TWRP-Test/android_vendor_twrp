@@ -29,10 +29,14 @@ $(foreach v,$(EXPORT_TO_SOONG),$(eval $(call addVar,$(v))))
 SOONG_CONFIG_NAMESPACES += twrpGlobalVars
 SOONG_CONFIG_twrpGlobalVars += \
     target_enforce_ab_ota_partition_list \
-    target_init_vendor_lib
+    target_init_vendor_lib \
+    supports_hw_fde \
+    supports_hw_fde_perf
 
 # Soong bool variables
 SOONG_CONFIG_twrpGlobalVars_target_enforce_ab_ota_partition_list := $(TARGET_ENFORCE_AB_OTA_PARTITION_LIST)
+SOONG_CONFIG_twrpGlobalVars_supports_hw_fde := $(TARGET_HW_DISK_ENCRYPTION)
+SOONG_CONFIG_twrpGlobalVars_supports_hw_fde_perf := $(TARGET_HW_DISK_ENCRYPTION_PERF)
 
 # Set default values
 TARGET_INIT_VENDOR_LIB ?= vendor_init
