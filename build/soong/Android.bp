@@ -88,6 +88,7 @@ soong_config_module_type {
     module_type: "cc_defaults",
     config_namespace: "twrpGlobalVars",
     bool_variables: ["supports_hw_fde"],
+    value_variables: ["hw_fde_cryptfs_hw_header_lib_name", "hw_fde_cryptfs_hw_shared_lib_name"],
     properties: [
         "cflags",
         "header_libs",
@@ -100,8 +101,12 @@ vold_hw_fde {
     soong_config_variables: {
         supports_hw_fde: {
             cflags: ["-DCONFIG_HW_DISK_ENCRYPTION"],
-            header_libs: ["libcryptfs_hw_headers"],
-            shared_libs: ["libcryptfs_hw"],
+        },
+        hw_fde_cryptfs_hw_header_lib_name: {
+            header_libs: ["%s"],
+        },
+        hw_fde_cryptfs_hw_shared_lib_name: {
+            shared_libs: ["%s"],
         },
     },
 }
@@ -111,6 +116,7 @@ soong_config_module_type {
     module_type: "cc_defaults",
     config_namespace: "twrpGlobalVars",
     bool_variables: ["supports_hw_fde_perf"],
+    value_variables: ["hw_fde_cryptfs_hw_shared_lib_name"],
     properties: [
         "cflags",
         "shared_libs",
@@ -122,7 +128,9 @@ vold_hw_fde_perf {
     soong_config_variables: {
         supports_hw_fde_perf: {
             cflags: ["-DCONFIG_HW_DISK_ENCRYPT_PERF"],
-            shared_libs: ["libcryptfs_hw"],
+        },
+        hw_fde_cryptfs_hw_shared_lib_name: {
+            shared_libs: ["%s"],
         },
     },
 }
