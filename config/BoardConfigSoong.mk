@@ -33,10 +33,24 @@ SOONG_CONFIG_twrpGlobalVars += \
     supports_hw_fde \
     supports_hw_fde_perf
 
+ifeq ($(TARGET_HW_DISK_ENCRYPTION),true)
+SOONG_CONFIG_twrpGlobalVars += \
+    hw_fde_cryptfs_hw_header_lib_name \
+    hw_fde_cryptfs_hw_shared_lib_name
+endif
+
 # Soong bool variables
 SOONG_CONFIG_twrpGlobalVars_target_enforce_ab_ota_partition_list := $(TARGET_ENFORCE_AB_OTA_PARTITION_LIST)
 SOONG_CONFIG_twrpGlobalVars_supports_hw_fde := $(TARGET_HW_DISK_ENCRYPTION)
 SOONG_CONFIG_twrpGlobalVars_supports_hw_fde_perf := $(TARGET_HW_DISK_ENCRYPTION_PERF)
+
+ifneq ($(TARGET_CRYPTFS_HW_PATH),)
+  SOONG_CONFIG_twrpGlobalVars_hw_fde_cryptfs_hw_header_lib_name := //$(TARGET_CRYPTFS_HW_PATH):libcryptfs_hw_headers
+  SOONG_CONFIG_twrpGlobalVars_hw_fde_cryptfs_hw_shared_lib_name := //$(TARGET_CRYPTFS_HW_PATH):libcryptfs_hw
+else
+  SOONG_CONFIG_twrpGlobalVars_hw_fde_cryptfs_hw_header_lib_name := libcryptfs_hw_headers
+  SOONG_CONFIG_twrpGlobalVars_hw_fde_cryptfs_hw_shared_lib_name := libcryptfs_hw
+endif
 
 # Set default values
 TARGET_INIT_VENDOR_LIB ?= vendor_init
