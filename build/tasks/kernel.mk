@@ -464,25 +464,18 @@ endif
 ## Install it
 
 ifeq ($(NEEDS_KERNEL_COPY),true)
-file := $(INSTALLED_KERNEL_TARGET)
-ALL_PREBUILT += $(file)
-$(file) : $(KERNEL_BIN) | $(ACP) | $(DEPMOD) 
-	$(transform-prebuilt-to-target)
 ifneq ($(TW_LOAD_VENDOR_MODULES),)
 ifdef TARGET_PREBUILT_KERNEL
-	$(call twrp-depmod)
+        $(call twrp-depmod)
 endif
 endif
-ALL_PREBUILT += $(INSTALLED_KERNEL_TARGET)
+$(INSTALLED_KERNEL_TARGET): $(KERNEL_BIN)
+	$(transform-prebuilt-to-target)
 endif
 
 ifeq ($(RECOVERY_KERNEL_COPY),true)
-file := $(INSTALLED_RECOVERY_KERNEL)
-ALL_PREBUILT += $(file)
-$(file) : $(RECOVERY_BIN) | $(ACP)
+$(INSTALLED_RECOVERY_KERNEL_TARGET): $(RECOVERY_BIN)
 	$(transform-prebuilt-to-target)
-
-ALL_PREBUILT += $(INSTALLED_RECOVERY_KERNEL)
 endif
 
 .PHONY: recovery-kernel
