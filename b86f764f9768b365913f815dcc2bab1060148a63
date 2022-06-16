@@ -34,6 +34,23 @@
       "parentUuid": "c8df10bb_a6f16adb",
       "revId": "b86f764f9768b365913f815dcc2bab1060148a63",
       "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31840834_2f3f1249",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 487
+      },
+      "writtenOn": "2022-06-16T12:42:23Z",
+      "side": 1,
+      "message": "Well, I got \"module libcryptfs_hw missing dependencies: legacy_hw_disk_encryption_defaults\" errors until I applied that patch. The DT does reference libhardware_legacy though.",
+      "revId": "b86f764f9768b365913f815dcc2bab1060148a63",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
     }
   ]
 }
