@@ -50,7 +50,14 @@ EXPORT_TO_SOONG := \
     TW_EXCLUDE_NANO \
     TW_SUPPORT_INPUT_AIDL_HAPTICS \
     TW_USE_SAMSUNG_HAPTICS \
+<<<<<<< HEAD   (2fcc2a Merge "makevars: add TW_USE_FSCRYPT_POLICY" into android-12.)
     TW_USE_FSCRYPT_POLICY
+=======
+    TW_STATUS_ICONS_ALIGN \
+    TW_CUSTOM_BATTERY_POS \
+    TW_CUSTOM_CLOCK_POS \
+    TW_CUSTOM_CPU_POS
+>>>>>>> CHANGE (acdbc4 twrp: makevars: Add vars for status bar icon offsets)
 
 SOONG_CONFIG_NAMESPACES += makeVarsPlugin
 SOONG_CONFIG_makeVarsPlugin :=
