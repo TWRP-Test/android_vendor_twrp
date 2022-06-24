@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a09c852_8fc39a2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 535
+      },
+      "writtenOn": "2022-06-24T10:32:48Z",
+      "side": 1,
+      "message": "Renamed the Alignment var according to the changes to the original commit.",
+      "revId": "09abe2dd6140e44d4ade2a880bef72715c1b7b4f",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
