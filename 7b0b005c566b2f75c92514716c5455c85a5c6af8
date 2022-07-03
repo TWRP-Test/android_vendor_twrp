@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "633fad07_102889c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 956
+      },
+      "writtenOn": "2022-07-03T09:25:32Z",
+      "side": 1,
+      "message": "5688: kernel_module_loader: Add TW_BATTERY_SYSFS_WAIT_SECONDS to configure Wait_For_Battery timeout | https://gerrit.twrp.me/c/android_bootable_recovery/+/5688",
+      "revId": "7b0b005c566b2f75c92514716c5455c85a5c6af8",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
