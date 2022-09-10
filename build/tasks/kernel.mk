@@ -104,8 +104,10 @@ else
 endif
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-    ifeq ($(BOARD_KERNEL_IMAGE_NAME),)
-        $(error BOARD_KERNEL_IMAGE_NAME not defined.)
+    ifeq ($(BOARD_USES_GENERIC_KERNEL_IMAGE),)
+        ifeq ($(BOARD_KERNEL_IMAGE_NAME),)
+            $(error BOARD_KERNEL_IMAGE_NAME not defined.)
+        endif
     endif
 endif
 TARGET_PREBUILT_INT_KERNEL := $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NAME)
