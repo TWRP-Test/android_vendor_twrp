@@ -30,6 +30,7 @@ SOONG_CONFIG_NAMESPACES += twrpGlobalVars
 SOONG_CONFIG_twrpGlobalVars += \
     legacy_hw_disk_encryption \
     target_enforce_ab_ota_partition_list \
+    gralloc_handle_has_reserved_size \
     target_init_vendor_lib \
     supports_hw_fde \
     supports_hw_fde_perf
@@ -41,6 +42,7 @@ SOONG_CONFIG_twrpGlobalVars += \
 endif
 
 # Soong bool variables
+SOONG_CONFIG_twrpGlobalVars_gralloc_handle_has_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE)
 SOONG_CONFIG_twrpGlobalVars_legacy_hw_disk_encryption := $(TARGET_LEGACY_HW_DISK_ENCRYPTION)
 SOONG_CONFIG_twrpGlobalVars_target_enforce_ab_ota_partition_list := $(TARGET_ENFORCE_AB_OTA_PARTITION_LIST)
 SOONG_CONFIG_twrpGlobalVars_supports_hw_fde := $(TARGET_HW_DISK_ENCRYPTION)
@@ -55,6 +57,7 @@ else
 endif
 
 # Set default values
+TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE ?= false
 TARGET_INIT_VENDOR_LIB ?= vendor_init
 
 # Soong value variables
