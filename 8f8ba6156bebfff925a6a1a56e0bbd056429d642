@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbf43462_63f833e9",
+        "filename": "soong/makevars.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2022-11-05T21:25:16Z",
+      "side": 1,
+      "message": "Do we still have TW_NO_FASTBOOT in the code?",
+      "revId": "8f8ba6156bebfff925a6a1a56e0bbd056429d642",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
