@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9adb5b_d892c2c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 48
+      },
+      "writtenOn": "2023-09-13T09:48:13Z",
+      "side": 1,
+      "message": "works for me after removing the tests/ dir",
+      "revId": "bb5a84c13a87c8f193167647258435b07054bd85",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
