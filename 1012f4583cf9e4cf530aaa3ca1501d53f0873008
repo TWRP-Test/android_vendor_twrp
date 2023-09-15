@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9495fdb6_8ff0fd69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 144
+      },
+      "writtenOn": "2023-09-15T10:13:35Z",
+      "side": 1,
+      "message": "eg \n\nhttps://gerrit.twrp.me/c/android_device_asus_sm84xx-common/+/6796",
+      "revId": "1012f4583cf9e4cf530aaa3ca1501d53f0873008",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
