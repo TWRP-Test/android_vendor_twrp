@@ -1,4 +1,6 @@
+ifneq ($(TARGET_USES_KERNEL_PLATFORM),true)
 include vendor/twrp/config/BoardConfigKernel.mk
+endif
 include vendor/twrp/config/BoardConfigSoong.mk
 
 ifeq ($(BOARD_USES_RECOVERY_AS_BOOT),true)
