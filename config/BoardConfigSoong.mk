@@ -43,7 +43,7 @@ SOONG_CONFIG_twrpVarsPlugin :=
 
 define addVar
   SOONG_CONFIG_twrpVarsPlugin += $(1)
-  SOONG_CONFIG_twrpVarsPlugin_$(1) := $$(subst ",\",$$($1))
+  SOONG_CONFIG_twrpVarsPlugin_$(1) := $($1)
 endef
 
 $(foreach v,$(EXPORT_TO_SOONG),$(eval $(call addVar,$(v))))
