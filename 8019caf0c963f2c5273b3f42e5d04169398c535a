@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b40b1d96_82adda2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2023-11-24T11:15:32Z",
+      "side": 1,
+      "message": "This fixed the error. If you use the flag TW_SUPPORT_INPUT_1_2_HAPTICS :\u003d true there is an error when compiling\nbootable/recovery/minuitwrp/events.cpp:35:10: fatal error: \u0027android/hardware/vibrator/1.2/IVibrator.h\u0027 file not found\n#include \u003candroid/hardware/vibrator/1.2/IVibrator.h\u003e\nNow no errors. Vibro works.",
+      "revId": "8019caf0c963f2c5273b3f42e5d04169398c535a",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
