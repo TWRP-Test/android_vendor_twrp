@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd8275ea_1a46a6ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1200
+      },
+      "writtenOn": "2023-11-26T08:24:18Z",
+      "side": 1,
+      "message": "Fixes the few pixels gap i had on sdm660 (clover, lavender), with this patch display is fullscreen.",
+      "revId": "6bc31ffe48346d4ba7ec93c24cd5d4f44f82c3ce",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
