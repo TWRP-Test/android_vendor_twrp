@@ -16,6 +16,23 @@
       "message": "https://gerrit.twrp.me/c/android_vendor_twrp/+/6020\n\nOr just pull latest 12.1 branch, this is outdated",
       "revId": "edbecb5ef455f193970c993496930d4d9828a19f",
       "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "709635d3_621b819c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-12-15T00:00:23Z",
+      "side": 1,
+      "message": "It\u0027s still in android-12.1 here: https://github.com/TeamWin/android_vendor_twrp/blob/android-12.1/build/soong/generator/generator.go#L150\n\nA14 removed it from soong it looks like.",
+      "revId": "edbecb5ef455f193970c993496930d4d9828a19f",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
     }
   ],
   "submitRequirementResults": []
