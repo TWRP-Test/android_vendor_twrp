@@ -154,6 +154,9 @@ SOONG_CONFIG_twrpGlobalVars_tw_support_input_aidl_haptics_fqname := $(subst ",, 
 SOONG_CONFIG_twrpGlobalVars_tw_support_input_aidl_haptics_fix_off := $(TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF)
 SOONG_CONFIG_twrpGlobalVars_tw_use_samsung_haptics := $(TW_USE_SAMSUNG_HAPTICS)
 SOONG_CONFIG_twrpGlobalVars_tw_brightness_path := $(subst ",, $(TW_BRIGHTNESS_PATH))
+ifeq ($(TW_BRIGHTNESS_PATH),)
+  TW_MAX_BRIGHTNESS := 1024
+endif
 SOONG_CONFIG_twrpGlobalVars_tw_max_brightness := $(TW_MAX_BRIGHTNESS)
 
 ifneq ($(TARGET_CRYPTFS_HW_PATH),)
