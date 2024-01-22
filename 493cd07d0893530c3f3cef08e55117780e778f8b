@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b82abc_a078fbb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2024-01-22T14:02:22Z",
+      "side": 1,
+      "message": "If we set TW_MAX_BRIGHTNESS here, then won\u0027t this override any automatically detected max brightness value? Presently we only HAVE to set it if brightness path or screen blank is specified. But if we set it here, then aren\u0027t we overriding the code in data.cpp? Maybe we should just be setting it there instead?\n\nhttps://github.com/TeamWin/android_bootable_recovery/blob/android-12.1/data.cpp#L848-L871",
+      "revId": "493cd07d0893530c3f3cef08e55117780e778f8b",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
