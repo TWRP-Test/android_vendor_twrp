@@ -34,6 +34,23 @@
       "parentUuid": "e6b82abc_a078fbb7",
       "revId": "493cd07d0893530c3f3cef08e55117780e778f8b",
       "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abd20ce2_bb81c335",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 238
+      },
+      "writtenOn": "2024-01-28T17:44:52Z",
+      "side": 1,
+      "message": "in this case you should do it like this\nTW_MAX_BRIGHTNESS ?\u003d 1023\nwithout any if definitions\nand I\u0027d rather not do this, I\u0027d prefer using auto detection, this will somewhat break it on devices that have 4095 max brightness",
+      "revId": "493cd07d0893530c3f3cef08e55117780e778f8b",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
     }
   ]
 }
