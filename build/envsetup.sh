@@ -15,6 +15,7 @@ function breakfast()
 {
     target=$1
     local variant=$2
+    source ${ANDROID_BUILD_TOP}/vendor/twrp/vars/aosp_target_release
     CUSTOM_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
@@ -38,7 +39,7 @@ function breakfast()
             if [ -z "$variant" ]; then
                 variant="userdebug"
             fi
-            lunch twrp_$target-$variant
+            lunch twrp_$target-$aosp_target_release-$variant
         fi
     fi
     return $?
