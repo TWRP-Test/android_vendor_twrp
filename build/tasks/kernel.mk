@@ -591,7 +591,7 @@ endif
 ifeq ($(NEEDS_KERNEL_COPY),true)
 ifneq ($(TW_LOAD_VENDOR_MODULES),)
 ifdef TARGET_PREBUILT_KERNEL
-        $(call twrp-depmod)
+	$(call twrp-depmod)
 endif
 endif
 $(INSTALLED_KERNEL_TARGET): $(KERNEL_BIN)
