@@ -242,6 +242,24 @@ def detect_revision(repo):
     sys.exit()
 
 
+def get_from_tree(device):
+    search = []
+    if not os.path.isdir("device"):
+        os.mkdir("device")
+    for sub_folder in os.listdir("device"):
+        if os.path.isdir("device/%s/%s" % (sub_folder, device)):
+            search.append("device/%s/%s" % (sub_folder, device))
+    if len(search) > 1:
+        print("Found multiple products under the name %s. "
+              "Defaulting to manifest check" % device)
+        location = get_from_manifest(device)
+    elif len(search) == 1:
+        location = search[0]
+    else:
+        location = get_from_manifest(device)
+    return location
+
+
 def main():
     global DEBUG
     try:
@@ -256,7 +274,7 @@ def main():
     device = product[product.find("_") + 1:] or product
 
     if depsonly:
-        repo_path = get_from_manifest(device)
+        repo_path = get_from_tree(device)
         if repo_path:
             fetch_dependencies(repo_path)
         else:
