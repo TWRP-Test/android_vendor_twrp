@@ -43,7 +43,7 @@ except ImportError:
 DEBUG = False
 
 custom_local_manifest = ".repo/local_manifests/roomservice.xml"
-custom_default_revision =  os.getenv('ROOMSERVICE_DEFAULT_BRANCH', 'android-12.1')
+custom_default_revision =  os.getenv('ROOMSERVICE_DEFAULT_BRANCH', 'android-14')
 custom_dependencies = "twrp.dependencies"
 org_manifest = "TeamWin"  # leave empty if org is provided in manifest
 org_display = "TeamWin"  # needed for displaying
