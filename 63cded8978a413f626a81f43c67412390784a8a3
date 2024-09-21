@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e225a56_4d558412",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2024-09-21T20:28:22Z",
+      "side": 1,
+      "message": "I would rather modify cts because it\u0027s easier to understand what\u0027s happening.",
+      "revId": "63cded8978a413f626a81f43c67412390784a8a3",
+      "serverId": "9c1c7d72-6534-4d44-b0ea-39f63e804833"
+    }
+  ]
+}
