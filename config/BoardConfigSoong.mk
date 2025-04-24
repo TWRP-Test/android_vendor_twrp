@@ -53,7 +53,6 @@ SOONG_CONFIG_NAMESPACES += twrpGlobalVars
 SOONG_CONFIG_twrpGlobalVars += \
     legacy_hw_disk_encryption \
     target_enforce_ab_ota_partition_list \
-    target_init_vendor_lib \
     supports_hw_fde \
     supports_hw_fde_perf \
     tw_delay_touch_init_ms \
@@ -165,8 +164,7 @@ else
   SOONG_CONFIG_twrpGlobalVars_hw_fde_cryptfs_hw_shared_lib_name := libcryptfs_hw
 endif
 
-# Set default values
-TARGET_INIT_VENDOR_LIB ?= vendor_init
-
-# Soong value variables
-SOONG_CONFIG_twrpGlobalVars_target_init_vendor_lib := $(TARGET_INIT_VENDOR_LIB)
+# Vendor init
+ifneq ($(TARGET_INIT_VENDOR_LIB),)
+    $(call soong_config_set,libinit,vendor_init_lib,$(TARGET_INIT_VENDOR_LIB))
+endif
