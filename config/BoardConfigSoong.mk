@@ -92,7 +92,8 @@ SOONG_CONFIG_twrpGlobalVars += \
     tw_support_input_aidl_haptics_fix_off \
     tw_use_samsung_haptics \
     tw_brightness_path \
-    tw_max_brightness
+    tw_max_brightness \
+    tw_use_meizu_touch_mapping
 
 ifeq ($(TARGET_HW_DISK_ENCRYPTION),true)
 SOONG_CONFIG_twrpGlobalVars += \
@@ -155,6 +156,7 @@ SOONG_CONFIG_twrpGlobalVars_tw_support_input_aidl_haptics_fix_off := $(TW_SUPPOR
 SOONG_CONFIG_twrpGlobalVars_tw_use_samsung_haptics := $(TW_USE_SAMSUNG_HAPTICS)
 SOONG_CONFIG_twrpGlobalVars_tw_brightness_path := $(subst ",, $(TW_BRIGHTNESS_PATH))
 SOONG_CONFIG_twrpGlobalVars_tw_max_brightness := $(TW_MAX_BRIGHTNESS)
+SOONG_CONFIG_twrpGlobalVars_tw_use_meizu_touch_mapping := $(TW_USE_MEIZU_TOUCH_MAPPING)
 
 ifneq ($(TARGET_CRYPTFS_HW_PATH),)
   SOONG_CONFIG_twrpGlobalVars_hw_fde_cryptfs_hw_header_lib_name := //$(TARGET_CRYPTFS_HW_PATH):libcryptfs_hw_headers

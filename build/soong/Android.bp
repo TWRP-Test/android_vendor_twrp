@@ -179,6 +179,7 @@ soong_config_module_type {
         "tw_support_input_aidl_haptics",
         "tw_support_input_aidl_haptics_fix_off",
         "tw_use_samsung_haptics",
+        "tw_use_meizu_touch_mapping",
 ],
     properties: ["cflags"],
 }
@@ -297,5 +298,8 @@ twrp {
         tw_max_brightness: {
             cflags: ["-DTW_MAX_BRIGHTNESS=%s"]
         },
+        tw_use_meizu_touch_mapping: {
+            cflags: ["-DTW_USE_MEIZU_TOUCH_MAPPING"]
+	    },
     },
 }
