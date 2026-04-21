@@ -170,8 +170,3 @@ endif
 ifneq ($(TARGET_INIT_VENDOR_LIB),)
     $(call soong_config_set,libinit,vendor_init_lib,$(TARGET_INIT_VENDOR_LIB))
 endif
-
-# Omapi UUID
-ifneq ($(TW_OMAPI_UUID),)
-    $(call soong_config_set,omapi,uuid,$(TW_OMAPI_UUID))
-endif
