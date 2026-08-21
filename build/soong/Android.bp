@@ -159,7 +159,6 @@ soong_config_module_type {
         "tw_event_logging",
         "tw_no_screen_blank",
         "tw_no_screen_timeout",
-        "tw_oem_build",
         "tw_round_screen",
         "tw_support_input_1_2_haptics",
         "tw_target_uses_qcom_bsp",
@@ -204,9 +203,6 @@ twrp {
         },
         tw_no_screen_timeout: {
             cflags: ["-DTW_NO_SCREEN_TIMEOUT"]
-        },
-        tw_oem_build: {
-            cflags: ["-DTW_OEM_BUILD"]
         },
         tw_x_offset: {
             cflags: ["-DTW_X_OFFSET=%s"]

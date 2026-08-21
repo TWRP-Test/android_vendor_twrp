@@ -61,7 +61,6 @@ SOONG_CONFIG_twrpGlobalVars += \
     tw_ozip_decrypt_key \
     tw_no_screen_blank \
     tw_no_screen_timeout \
-    tw_oem_build \
     tw_x_offset \
     tw_y_offset \
     tw_w_offset \
@@ -124,7 +123,6 @@ SOONG_CONFIG_twrpGlobalVars_tw_use_key_code_touch_sync := $(TW_USE_KEY_CODE_TOUC
 SOONG_CONFIG_twrpGlobalVars_tw_ozip_decrypt_key := $(subst ",, $(TW_OZIP_DECRYPT_KEY))
 SOONG_CONFIG_twrpGlobalVars_tw_no_screen_blank := $(TW_NO_SCREEN_BLANK)
 SOONG_CONFIG_twrpGlobalVars_tw_no_screen_timeout := $(TW_NO_SCREEN_TIMEOUT)
-SOONG_CONFIG_twrpGlobalVars_tw_oem_build := $(TW_OEM_BUILD)
 SOONG_CONFIG_twrpGlobalVars_tw_x_offset := $(TW_X_OFFSET)
 SOONG_CONFIG_twrpGlobalVars_tw_y_offset := $(TW_Y_OFFSET)
 SOONG_CONFIG_twrpGlobalVars_tw_w_offset := $(TW_W_OFFSET)
