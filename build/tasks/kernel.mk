@@ -563,11 +563,14 @@ endif # BOARD_INCLUDE_DTB_IN_BOOTIMG
 endif # FULL_KERNEL_BUILD
 
 ifneq ($(TW_LOAD_VENDOR_MODULES),)
+ifdef TARGET_PREBUILT_KERNEL
 define twrp-depmod
 	@echo "calling depmod on prebuilt modules"
 	mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/vendor/lib/modules/1.1
 	$(DEPMOD) -b $(TARGET_RECOVERY_ROOT_OUT)/vendor 1.1
 endef
+BOARD_RECOVERY_IMAGE_PREPARE += $(call twrp-depmod)
+endif
 endif
 
 ifeq ($(FULL_RECOVERY_KERNEL_BUILD),true)
@@ -589,12 +592,13 @@ endif
 ## Install it
 
 ifeq ($(NEEDS_KERNEL_COPY),true)
-#ifneq ($(TW_LOAD_VENDOR_MODULES),)
-#ifdef TARGET_PREBUILT_KERNEL
-#	$(call twrp-depmod)
-#endif
-#endif
 $(INSTALLED_KERNEL_TARGET): $(KERNEL_BIN)
+
+ifneq ($(TW_LOAD_VENDOR_MODULES),)
+ifdef TARGET_PREBUILT_KERNEL
+$(INSTALLED_KERNEL_TARGET): | $(DEPMOD)
+endif
+endif
 	$(transform-prebuilt-to-target)
 endif
 
