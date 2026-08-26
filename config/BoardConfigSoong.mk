@@ -33,7 +33,27 @@ EXPORT_TO_SOONG := \
     TW_STATUS_ICONS_ALIGN \
     TW_CUSTOM_BATTERY_POS \
     TW_CUSTOM_CLOCK_POS \
-    TW_CUSTOM_CPU_POS
+    TW_CUSTOM_CPU_POS \
+    TW_OZIP_DECRYPT_KEY \
+    TW_LOAD_VENDOR_MODULES \
+    TW_SYSTEM_BUILD_PROP_ADDITIONAL_PATHS \
+    TW_INTERNAL_STORAGE_PATH \
+    TW_INTERNAL_STORAGE_MOUNT_POINT \
+    TW_EXTERNAL_STORAGE_PATH \
+    TW_EXTERNAL_STORAGE_MOUNT_POINT \
+    TW_CUSTOM_POWER_BUTTON \
+    TARGET_USE_CUSTOM_LUN_FILE_PATH \
+    TW_ADDITIONAL_APEX_FILES \
+    TW_BRIGHTNESS_PATH \
+    TW_SECONDARY_BRIGHTNESS_PATH \
+    TW_CUSTOM_BATTERY_PATH \
+    TW_CUSTOM_CPU_TEMP_PATH \
+    TW_OVERRIDE_SYSTEM_PROPS \
+    TW_OVERRIDE_PROPS_ADDITIONAL_PARTITIONS \
+    TARGET_OTA_ASSERT_DEVICE \
+    TW_BACKUP_EXCLUSIONS \
+    BOARD_BOOT_HEADER_VERSION \
+    TARGET_RECOVERY_TWRP_LIB
 
 # Setup SOONG_CONFIG_* vars to export the vars listed above.
 # Documentation here:
@@ -59,8 +79,6 @@ SOONG_CONFIG_twrpGlobalVars += \
     tw_delay_touch_init_ms \
     tw_event_logging \
     tw_use_key_code_touch_sync \
-    tw_ozip_decrypt_key \
-    tw_no_screen_blank \
     tw_no_screen_timeout \
     tw_x_offset \
     tw_y_offset \
@@ -91,9 +109,68 @@ SOONG_CONFIG_twrpGlobalVars += \
     tw_support_input_aidl_haptics_fqname \
     tw_support_input_aidl_haptics_fix_off \
     tw_use_samsung_haptics \
-    tw_brightness_path \
-    tw_max_brightness \
-    tw_use_meizu_touch_mapping
+    tw_use_meizu_touch_mapping \
+    use_dynamic_partition \
+    move_recovery_res_to_vendor_boot \
+    device_version \
+    exclude_apex \
+    include_resetprop \
+    include_libresetprop \
+    include_crypto \
+    include_crypto_fbe \
+    include_se_omapi \
+    ab_ota_updater \
+    include_lpdump \
+    include_lptools \
+    uses_vendor_libs \
+    no_flash_current_twrp \
+    prepare_data_media_early \
+    enable_fs_compression \
+    git_revision \
+    has_mtp \
+    has_no_real_sdcard \
+    sdcard_on_data \
+    no_boot_partition \
+    no_reboot_bootloader \
+    no_reboot_recovery \
+    no_battery_percent \
+    no_cpu_temperature \
+    always_rmrf \
+    no_usb_storage \
+    has_download_mode \
+    has_edl_mode \
+    no_screen_blank \
+    sdext_no_ext4 \
+    no_haptics \
+    no_network \
+    use_dmctl \
+    include_7za \
+    include_zstd \
+    workaround_backup_bug \
+    use_serialno_prop_for_device_id \
+    max_brightness \
+    default_brightness \
+    use_legacy_battery_services \
+    qcom_rtc_fix \
+    default_language \
+    qcom_ats_offset \
+    clock_offset \
+    include_fastbootd \
+    enable_blkdiscard \
+    skip_additional_fstab \
+    force_keymaster_version \
+    avb_vbmeta_flags_all_disabled \
+    exclude_tzdata \
+    exclude_bash \
+    include_repacktools \
+    exclude_default_usb_init \
+    include_logcat \
+    use_logd \
+    recovery_device_modules \
+    include_ntfs_3g \
+    include_python \
+    platform_sdk_version \
+    include_wifi
 
 ifeq ($(TARGET_HW_DISK_ENCRYPTION),true)
 SOONG_CONFIG_twrpGlobalVars += \
@@ -102,7 +179,6 @@ SOONG_CONFIG_twrpGlobalVars += \
 endif
 
 # Defaults
-TW_OZIP_DECRYPT_KEY ?= 0
 TARGET_RECOVERY_OVERSCAN_PERCENT ?= 0
 TW_X_OFFSET ?= 0
 TW_Y_OFFSET ?= 0
@@ -111,18 +187,46 @@ TW_H_OFFSET ?= 0
 TW_DELAY_TOUCH_INIT_MS ?= 0
 TW_FRAMERATE ?= 30
 TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME ?= IVibrator/default
+TW_DEVICE_VERSION ?= "-0"
+TW_DEFAULT_LANGUAGE ?= en
+TW_MAX_BRIGHTNESS ?= 255
+TW_DEFAULT_BRIGHTNESS ?= 100
+TW_QCOM_ATS_OFFSET ?= 0
+TW_CLOCK_OFFSET ?= 0
+
+ifeq ($(TW_FORCE_USE_BUSYBOX), true)
+    TW_USE_TOOLBOX := false
+else
+    TW_USE_TOOLBOX := true
+endif
+
+ifneq ($(TW_CUSTOM_BATTERY_PATH),)
+    TW_USE_LEGACY_BATTERY_SERVICES := true
+endif
+
+ifneq ($(TW_OVERRIDE_SYSTEM_PROPS),)
+    TW_INCLUDE_LIBRESETPROP := true
+endif
+
+ifeq ($(TW_EXCLUDE_MTP),)
+    TW_HAS_MTP := true
+endif
+
+ifeq ($(PRODUCT_USE_DYNAMIC_PARTITIONS), true)
+    ifeq ($(TW_ENABLE_ALL_PARTITION_TOOLS), true)
+        TW_INCLUDE_LPDUMP := true
+        TW_INCLUDE_LPTOOLS := true
+    endif
+endif
 
 # Soong bool variables
 SOONG_CONFIG_twrpGlobalVars_legacy_hw_disk_encryption := $(TARGET_LEGACY_HW_DISK_ENCRYPTION)
 SOONG_CONFIG_twrpGlobalVars_target_enforce_ab_ota_partition_list := $(TARGET_ENFORCE_AB_OTA_PARTITION_LIST)
-SOONG_CONFIG_twrpGlobalVars_supports_hw_fde := $(TARGET_HW_DISK_ENCRYPTION)
 SOONG_CONFIG_twrpGlobalVars_supports_hw_fde_perf := $(TARGET_HW_DISK_ENCRYPTION_PERF)
 
 SOONG_CONFIG_twrpGlobalVars_tw_delay_touch_init_ms := $(TW_DELAY_TOUCH_INIT_MS)
 SOONG_CONFIG_twrpGlobalVars_tw_event_logging := $(TW_EVENT_LOGGING)
 SOONG_CONFIG_twrpGlobalVars_tw_use_key_code_touch_sync := $(TW_USE_KEY_CODE_TOUCH_SYNC)
-SOONG_CONFIG_twrpGlobalVars_tw_ozip_decrypt_key := $(subst ",, $(TW_OZIP_DECRYPT_KEY))
-SOONG_CONFIG_twrpGlobalVars_tw_no_screen_blank := $(TW_NO_SCREEN_BLANK)
 SOONG_CONFIG_twrpGlobalVars_tw_no_screen_timeout := $(TW_NO_SCREEN_TIMEOUT)
 SOONG_CONFIG_twrpGlobalVars_tw_x_offset := $(TW_X_OFFSET)
 SOONG_CONFIG_twrpGlobalVars_tw_y_offset := $(TW_Y_OFFSET)
@@ -153,9 +257,91 @@ SOONG_CONFIG_twrpGlobalVars_tw_support_input_aidl_haptics := $(TW_SUPPORT_INPUT_
 SOONG_CONFIG_twrpGlobalVars_tw_support_input_aidl_haptics_fqname := $(subst ",, $(TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME))
 SOONG_CONFIG_twrpGlobalVars_tw_support_input_aidl_haptics_fix_off := $(TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF)
 SOONG_CONFIG_twrpGlobalVars_tw_use_samsung_haptics := $(TW_USE_SAMSUNG_HAPTICS)
-SOONG_CONFIG_twrpGlobalVars_tw_brightness_path := $(subst ",, $(TW_BRIGHTNESS_PATH))
-SOONG_CONFIG_twrpGlobalVars_tw_max_brightness := $(TW_MAX_BRIGHTNESS)
 SOONG_CONFIG_twrpGlobalVars_tw_use_meizu_touch_mapping := $(TW_USE_MEIZU_TOUCH_MAPPING)
+
+$(call soong_config_set_string_list, twrpGlobalVars, recovery_device_modules, $(TARGET_RECOVERY_DEVICE_MODULES))
+
+$(call soong_config_set, twrpGlobalVars, device_version, $(TW_DEVICE_VERSION))
+
+git_revision := $(shell git -C bootable/recovery rev-parse --short=8 HEAD 2>/dev/null)
+ifeq ($(shell git -C bootable/recovery diff --quiet; echo $$?),1)
+    git_revision := $(git_revision)-dirty
+endif
+$(call soong_config_set, twrpGlobalVars, git_revision, $(git_revision))
+
+$(call soong_config_set, twrpGlobalVars, default_language, $(TW_DEFAULT_LANGUAGE))
+
+$(call soong_config_set_int, twrpGlobalVars, max_brightness, $(TW_MAX_BRIGHTNESS))
+$(call soong_config_set_int, twrpGlobalVars, default_brightness, $(TW_DEFAULT_BRIGHTNESS))
+
+$(call soong_config_set_int, twrpGlobalVars, qcom_ats_offset, $(TW_QCOM_ATS_OFFSET))
+$(call soong_config_set_int, twrpGlobalVars, clock_offset, $(TW_CLOCK_OFFSET))
+
+$(call soong_config_set_int, twrpGlobalVars, platform_sdk_version, $(PLATFORM_SDK_VERSION))
+
+$(call add_soong_config_var, twrpGlobalVars, include_se_omapi)
+ifeq ($(TW_INCLUDE_CRYPTO), true)
+    TW_INCLUDE_CRYPTO_FBE := true
+    TW_INCLUDE_LIBRESETPROP := true
+    $(call soong_config_set_bool, twrpGlobalVars, include_se_omapi, $(TW_INCLUDE_OMAPI))
+endif
+
+$(call soong_config_set_bool, twrpGlobalVars, use_dynamic_partition, $(if $(filter true,$(PRODUCT_USE_DYNAMIC_PARTITIONS)),true,false))
+$(call soong_config_set_bool, twrpGlobalVars, move_recovery_res_to_vendor_boot, $(if $(filter true,$(BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT)),true,false))
+$(call soong_config_set_bool, twrpGlobalVars, use_serialno_prop_for_device_id, $(TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID))
+$(call soong_config_set_bool, twrpGlobalVars, exclude_apex, $(TW_EXCLUDE_APEX))
+$(call soong_config_set_bool, twrpGlobalVars, include_resetprop, $(TW_INCLUDE_RESETPROP))
+$(call soong_config_set_bool, twrpGlobalVars, include_libresetprop, $(TW_INCLUDE_LIBRESETPROP))
+$(call soong_config_set_bool, twrpGlobalVars, include_crypto, $(TW_INCLUDE_CRYPTO))
+$(call soong_config_set_bool, twrpGlobalVars, include_crypto_fbe, $(TW_INCLUDE_CRYPTO_FBE))
+$(call soong_config_set_bool, twrpGlobalVars, supports_hw_fde, $(TARGET_HW_DISK_ENCRYPTION))
+$(call soong_config_set_bool, twrpGlobalVars, ab_ota_updater, $(AB_OTA_UPDATER))
+$(call soong_config_set_bool, twrpGlobalVars, include_lpdump, $(TW_INCLUDE_LPDUMP))
+$(call soong_config_set_bool, twrpGlobalVars, include_lptools, $(TW_INCLUDE_LPTOOLS))
+$(call soong_config_set_bool, twrpGlobalVars, uses_vendor_libs, $(TW_USES_VENDOR_LIBS))
+$(call soong_config_set_bool, twrpGlobalVars, no_flash_current_twrp, $(TW_NO_FLASH_CURRENT_TWRP))
+$(call soong_config_set_bool, twrpGlobalVars, prepare_data_media_early, $(TW_PREPARE_DATA_MEDIA_EARLY))
+$(call soong_config_set_bool, twrpGlobalVars, enable_fs_compression, $(TW_ENABLE_FS_COMPRESSION))
+$(call soong_config_set_bool, twrpGlobalVars, has_mtp, $(TW_HAS_MTP))
+$(call soong_config_set_bool, twrpGlobalVars, tw_no_screen_timeout, $(TW_NO_SCREEN_TIMEOUT))
+$(call soong_config_set_bool, twrpGlobalVars, has_no_real_sdcard, $(BOARD_HAS_NO_REAL_SDCARD))
+$(call soong_config_set_bool, twrpGlobalVars, sdcard_on_data, $(RECOVERY_SDCARD_ON_DATA))
+$(call soong_config_set_bool, twrpGlobalVars, no_boot_partition, $(TW_HAS_NO_BOOT_PARTITION))
+$(call soong_config_set_bool, twrpGlobalVars, no_reboot_bootloader, $(TW_NO_REBOOT_BOOTLOADER))
+$(call soong_config_set_bool, twrpGlobalVars, no_reboot_recovery, $(TW_NO_REBOOT_RECOVERY))
+$(call soong_config_set_bool, twrpGlobalVars, no_battery_percent, $(TW_NO_BATT_PERCENT))
+$(call soong_config_set_bool, twrpGlobalVars, no_cpu_temperature, $(TW_NO_CPU_TEMP))
+$(call soong_config_set_bool, twrpGlobalVars, always_rmrf, $(TW_ALWAYS_RMRF))
+$(call soong_config_set_bool, twrpGlobalVars, never_umount_system, $(TW_NEVER_UNMOUNT_SYSTEM))
+$(call soong_config_set_bool, twrpGlobalVars, no_usb_storage, $(TW_NO_USB_STORAGE))
+$(call soong_config_set_bool, twrpGlobalVars, has_download_mode, $(TW_HAS_DOWNLOAD_MODE))
+$(call soong_config_set_bool, twrpGlobalVars, has_edl_mode, $(TW_HAS_EDL_MODE))
+$(call soong_config_set_bool, twrpGlobalVars, no_screen_blank, $(TW_NO_SCREEN_BLANK))
+$(call soong_config_set_bool, twrpGlobalVars, sdext_no_ext4, $(TW_SDEXT_NO_EXT4))
+$(call soong_config_set_bool, twrpGlobalVars, no_haptics, $(TW_NO_HAPTICS))
+$(call soong_config_set_bool, twrpGlobalVars, no_network, $(TW_NO_NETWORK))
+$(call soong_config_set_bool, twrpGlobalVars, use_dmctl, $(TW_USE_DMCTL))
+$(call soong_config_set_bool, twrpGlobalVars, include_7za, $(TW_INCLUDE_7ZA))
+$(call soong_config_set_bool, twrpGlobalVars, include_zstd, $(TW_INCLUDE_ZSTD))
+$(call soong_config_set_bool, twrpGlobalVars, workaround_backup_bug, $(TW_WORKAROUND_BACKUP_BUG))
+$(call soong_config_set_bool, twrpGlobalVars, use_serialno_prop_for_device_id, $(TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID))
+$(call soong_config_set_bool, twrpGlobalVars, use_legacy_battery_services, $(TW_USE_LEGACY_BATTERY_SERVICES))
+$(call soong_config_set_bool, twrpGlobalVars, qcom_rtc_fix, $(TARGET_RECOVERY_QCOM_RTC_FIX))
+$(call soong_config_set_bool, twrpGlobalVars, exclude_nano, $(TW_EXCLUDE_NANO))
+$(call soong_config_set_bool, twrpGlobalVars, include_fastbootd, $(TW_INCLUDE_FASTBOOTD))
+$(call soong_config_set_bool, twrpGlobalVars, enable_blkdiscard, $(TW_ENABLE_BLKDISCARD))
+$(call soong_config_set_bool, twrpGlobalVars, skip_additional_fstab, $(TW_SKIP_ADDITIONAL_FSTAB))
+$(call soong_config_set_bool, twrpGlobalVars, force_keymaster_version, $(TW_FORCE_KEYMASTER_VER))
+$(call soong_config_set_bool, twrpGlobalVars, avb_vbmeta_flags_all_disabled $(TW_AVB_VBMETA_FLAGS_ALL_DISABLED))
+$(call soong_config_set_bool, twrpGlobalVars, exclude_tzdata, $(TW_EXCLUDE_TZDATA))
+$(call soong_config_set_bool, twrpGlobalVars, exclude_bash, $(TW_EXCLUDE_BASH))
+$(call soong_config_set_bool, twrpGlobalVars, include_repacktools, $(TW_INCLUDE_REPACKTOOLS))
+$(call soong_config_set_bool, twrpGlobalVars, exclude_default_usb_init, $(TW_EXCLUDE_DEFAULT_USB_INIT))
+$(call soong_config_set_bool, twrpGlobalVars, include_logcat, $(TWRP_INCLUDE_LOGCAT))
+$(call soong_config_set_bool, twrpGlobalVars, use_logd, $(TARGET_USES_LOGD))
+$(call soong_config_set_bool, twrpGlobalVars, include_ntfs_3g, $(TW_INCLUDE_NTFS_3G))
+$(call soong_config_set_bool, twrpGlobalVars, include_python, $(TW_INCLUDE_PYTHON))
+$(call soong_config_set_bool, twrpGlobalVars, include_wifi, $(TW_INCLUDE_WIFI))
 
 ifneq ($(TARGET_CRYPTFS_HW_PATH),)
   SOONG_CONFIG_twrpGlobalVars_hw_fde_cryptfs_hw_header_lib_name := //$(TARGET_CRYPTFS_HW_PATH):libcryptfs_hw_headers

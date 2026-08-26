@@ -140,24 +140,26 @@ soong_config_module_type {
     module_type: "cc_defaults",
     config_namespace: "twrpGlobalVars",
     value_variables: [
-    "tw_delay_touch_init_ms",
-    //"tw_use_key_code_touch_sync",
-    "tw_ozip_decrypt_key",
-    "tw_x_offset",
-    "tw_y_offset",
-    "tw_w_offset",
-    "tw_h_offset",
-    "tw_framerate",
-    "target_recovery_overscan_percent",
-    "tw_input_blacklist",
-    //"tw_whitelist_input",
-    "tw_support_input_aidl_haptics_fqname",
-    "tw_brightness_path",
-    "tw_max_brightness",
-],
+        "tw_delay_touch_init_ms",
+        //"tw_use_key_code_touch_sync",
+        "tw_x_offset",
+        "tw_y_offset",
+        "tw_w_offset",
+        "tw_h_offset",
+        "tw_framerate",
+        "target_recovery_overscan_percent",
+        "tw_input_blacklist",
+        //"tw_whitelist_input",
+        "tw_support_input_aidl_haptics_fqname",
+        "device_version",
+        "git_revision",
+        "max_brightness",
+        "default_brightness",
+        "default_language",
+        "platform_sdk_version",
+    ],
     bool_variables: [
         "tw_event_logging",
-        "tw_no_screen_blank",
         "tw_no_screen_timeout",
         "tw_round_screen",
         "tw_support_input_1_2_haptics",
@@ -174,12 +176,68 @@ soong_config_module_type {
         "tw_ignore_major_axis_0",
         "tw_ignore_mt_position_0",
         "tw_haptics_tspdrv",
-        "tw_exclude_nano",
         "tw_support_input_aidl_haptics",
         "tw_support_input_aidl_haptics_fix_off",
         "tw_use_samsung_haptics",
         "tw_use_meizu_touch_mapping",
-],
+        "use_dynamic_partition",
+        "exclude_apex",
+        "include_resetprop",
+        "include_libresetprop",
+        "include_crypto",
+        "include_crypto_fbe",
+        "include_se_omapi",
+        "ab_ota_updater",
+        "include_lpdump",
+        "include_lptools",
+        "uses_vendor_libs",
+        "no_flash_current_twrp",
+        "prepare_data_media_early",
+        "enable_fs_compression",
+        "has_mtp",
+        "has_no_real_sdcard",
+        "sdcard_on_data",
+        "no_boot_partition",
+        "no_reboot_bootloader",
+        "no_reboot_recovery",
+        "no_battery_percent",
+        "no_cpu_temperature",
+        "always_rmrf",
+        "never_umount_system",
+        "no_usb_storage",
+        "has_download_mode",
+        "has_edl_mode",
+        "no_screen_blank",
+        "sdext_no_ext4",
+        "no_haptics",
+        "no_network",
+        "load_vendor_modules_exclude_gki",
+        "load_vendor_boot_modules",
+        "load_prebuilt_modules_at_first",
+        "use_dmctl",
+        "include_7za",
+        "include_zstd",
+        "workaround_backup_bug",
+        "use_serialno_prop_for_device_id",
+        "use_legacy_battery_services",
+        "qcom_rtc_fix",
+        "exclude_nano",
+        "include_fastbootd",
+        "enable_blkdiscard",
+        "skip_additional_fstab",
+        "force_keymaster_version",
+        "avb_vbmeta_flags_all_disabled",
+        "exclude_tzdata",
+        "exclude_bash",
+        "include_repacktools",
+        "exclude_default_usb_init",
+        "include_logcat",
+        "use_logd",
+        "include_ntfs_3g",
+        "include_python",
+        "move_recovery_res_to_vendor_boot",
+        "include_wifi"
+    ],
     properties: ["cflags"],
 }
 
@@ -192,14 +250,8 @@ twrp {
         //tw_use_key_code_touch_sync: {
             //cflags: ["-DTW_USE_KEY_CODE_TOUCH_SYNC=%s"]
         //},
-       tw_event_logging: {
+        tw_event_logging: {
             cflags: ["-D_EVENT_LOGGING"]
-        },
-        tw_ozip_decrypt_key: {
-            cflags: ["-DTW_OZIP_DECRYPT_KEY=\"%s\""]
-        },
-        tw_no_screen_blank: {
-            cflags: ["-DTW_NO_SCREEN_BLANK"]
         },
         tw_no_screen_timeout: {
             cflags: ["-DTW_NO_SCREEN_TIMEOUT"]
@@ -273,9 +325,6 @@ twrp {
         tw_haptics_tspdrv: {
             cflags: ["-DTW_HAPTICS_TSPDRV"]
         },
-        tw_exclude_nano: {
-            cflags: ["-DTW_EXCLUDE_NANO"]
-        },
         tw_support_input_aidl_haptics: {
             cflags: ["-DUSE_QTI_AIDL_HAPTICS"]
         },
@@ -283,19 +332,161 @@ twrp {
             cflags: ["-DUSE_QTI_AIDL_HAPTICS_FQNAME=\"%s\""]
         },
         tw_support_input_aidl_haptics_fix_off: {
-             cflags: ["-DUSE_QTI_AIDL_HAPTICS_FIX_OFF"]
+            cflags: ["-DUSE_QTI_AIDL_HAPTICS_FIX_OFF"]
         },
         tw_use_samsung_haptics: {
-             cflags: ["-DUSE_SAMSUNG_HAPTICS"]
-        },
-        tw_brightness_path: {
-             cflags: ["-DTW_BRIGHTNESS_PATH=\"%s\""]
-        },
-        tw_max_brightness: {
-            cflags: ["-DTW_MAX_BRIGHTNESS=%s"]
+            cflags: ["-DUSE_SAMSUNG_HAPTICS"]
         },
         tw_use_meizu_touch_mapping: {
             cflags: ["-DTW_USE_MEIZU_TOUCH_MAPPING"]
 	    },
-    },
+        use_dynamic_partition: {
+            cflags: ["-DPRODUCT_USE_DYNAMIC_PARTITIONS=1"]
+        },
+        move_recovery_res_to_vendor_boot: {
+            cflags: ["-DBOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT"]
+        },
+        device_version: {
+            cflags: ["-DTW_DEVICE_VERSION=\"-%s\""]
+        },
+        git_revision: {
+            cflags: ["-DTW_GIT_REVISION=\"%s\""]
+        },
+        exclude_apex: {
+            cflags: ["-DTW_EXCLUDE_APEX"]
+        },
+        include_libresetprop: {
+            cflags: ["-DTW_INCLUDE_LIBRESETPROP"]
+        },
+        include_crypto: {
+            cflags: [
+                "-DTW_INCLUDE_CRYPTO",
+                "-DUSE_FSCRYPT",
+                "-DTW_INCLUDE_FBE_METADATA_DECRYPT",
+            ]
+        },
+        include_crypto_fbe: {
+            cflags: ["-DTW_INCLUDE_FBE"]
+        },
+        include_se_omapi: {
+            cflags: ["-DTW_INCLUDE_OMAPI"]
+        },
+        ab_ota_updater: {
+            cflags: ["-DAB_OTA_UPDATER=1"]
+        },
+        uses_vendor_libs: {
+            cflags: ["-DUSE_VENDOR_LIBS=1"]
+        },
+        no_flash_current_twrp: {
+            cflags: ["-DTW_NO_FLASH_CURRENT_TWRP"]
+        },
+        prepare_data_media_early: {
+            cflags: ["-DTW_PREPARE_DATA_MEDIA_EARLY"]
+        },
+        enable_fs_compression: {
+            cflags: ["-DTW_ENABLE_FS_COMPRESSION"]
+        },
+        has_mtp: {
+            cflags: ["-DTW_HAS_MTP"]
+        },
+        has_no_real_sdcard: {
+            cflags: ["-DBOARD_HAS_NO_REAL_SDCARD"]
+        },
+        sdcard_on_data: {
+            cflags: ["-DRECOVERY_SDCARD_ON_DATA"]
+        },
+        no_boot_partition: {
+            cflags: ["-DTW_HAS_NO_BOOT_PARTITION"]
+        },
+        no_reboot_bootloader: {
+            cflags: ["-DTW_NO_REBOOT_BOOTLOADER"]
+        },
+        no_reboot_recovery: {
+            cflags: ["-DTW_NO_REBOOT_RECOVERY"]
+        },
+        no_battery_percent: {
+            cflags: ["-DTW_NO_BATT_PERCENT"]
+        },
+        no_cpu_temperature: {
+            cflags: ["-DTW_NO_CPU_TEMP"]
+        },
+        always_rmrf: {
+            cflags: ["-DTW_ALWAYS_RMRF"]
+        },
+        never_umount_system: {
+            cflags: ["-DTW_NEVER_UNMOUNT_SYSTEM"]
+        },
+        no_usb_storage: {
+            cflags: ["-DTW_NO_USB_STORAGE"]
+        },
+        has_download_mode: {
+            cflags: ["-DTW_HAS_DOWNLOAD_MODE"]
+        },
+        has_edl_mode: {
+            cflags: ["-DTW_HAS_EDL_MODE"]
+        },
+        no_screen_blank: {
+            cflags: ["-DTW_NO_SCREEN_BLANK"]
+        },
+        sdext_no_ext4: {
+            cflags: ["-DTW_SDEXT_NO_EXT4"]
+        },
+        no_haptics: {
+            cflags: ["-DTW_NO_HAPTICS"]
+        },
+        no_network: {
+            cflags: ["-DTW_NO_NETWORK"]
+        },
+        use_dmctl: {
+            cflags: ["-DTW_USE_DMCTL"]
+        },
+        include_7za: {
+            cflags: ["-DTW_INCLUDE_7ZA"]
+        },
+        include_zstd: {
+            cflags: ["-DTW_INCLUDE_ZSTD"]
+        },
+        use_serialno_prop_for_device_id: {
+            cflags: ["-DTW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID"]
+        },
+        use_legacy_battery_services: {
+            cflags: ["-DTW_USE_LEGACY_BATTERY_SERVICES"]
+        },
+        max_brightness: {
+            cflags: ["-DTW_MAX_BRIGHTNESS=%s"]
+        },
+        default_brightness: {
+            cflags: ["-DTW_DEFAULT_BRIGHTNESS=%s"]
+        },
+        qcom_rtc_fix: {
+            cflags: ["-DQCOM_RTC_FIX"]
+        },
+        default_language: {
+            cflags: ["-DTW_DEFAULT_LANGUAGE=%s"]
+        },
+        exclude_nano: {
+            cflags: ["-DTW_EXCLUDE_NANO"]
+        },
+        include_fastbootd: {
+            cflags: ["-DTW_INCLUDE_FASTBOOTD"]
+        },
+        enable_blkdiscard: {
+            cflags: ["-DTW_ENABLE_BLKDISCARD"]
+        },
+        skip_additional_fstab: {
+            cflags: ["-DTW_SKIP_ADDITIONAL_FSTAB"]
+        },
+        force_keymaster_version: {
+            cflags: ["-DTW_FORCE_KEYMASTER_VER"]
+        },
+        avb_vbmeta_flags_all_disabled: {
+            cflags: ["-DTW_AVB_VBMETA_FLAGS_ALL_DISABLED"]
+        },
+        platform_sdk_version: {
+            cflags: ["-DPLATFORM_SDK_VERSION=%s"]
+        },
+        include_wifi: {
+            cflags: ["-DTW_INCLUDE_WIFI"]
+        }
+    }
 }
