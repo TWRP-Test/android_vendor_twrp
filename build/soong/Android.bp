@@ -210,10 +210,6 @@ soong_config_module_type {
         "no_screen_blank",
         "sdext_no_ext4",
         "no_haptics",
-        "no_network",
-        "load_vendor_modules_exclude_gki",
-        "load_vendor_boot_modules",
-        "load_prebuilt_modules_at_first",
         "use_dmctl",
         "include_7za",
         "include_zstd",
@@ -433,9 +429,6 @@ twrp {
         },
         no_haptics: {
             cflags: ["-DTW_NO_HAPTICS"]
-        },
-        no_network: {
-            cflags: ["-DTW_NO_NETWORK"]
         },
         use_dmctl: {
             cflags: ["-DTW_USE_DMCTL"]

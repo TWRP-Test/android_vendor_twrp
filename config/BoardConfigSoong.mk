@@ -104,7 +104,6 @@ SOONG_CONFIG_twrpGlobalVars += \
     tw_input_blacklist \
     tw_whitelist_input \
     tw_haptics_tspdrv \
-    tw_exclude_nano \
     tw_support_input_aidl_haptics \
     tw_support_input_aidl_haptics_fqname \
     tw_support_input_aidl_haptics_fix_off \
@@ -142,7 +141,6 @@ SOONG_CONFIG_twrpGlobalVars += \
     no_screen_blank \
     sdext_no_ext4 \
     no_haptics \
-    no_network \
     use_dmctl \
     include_7za \
     include_zstd \
@@ -162,6 +160,7 @@ SOONG_CONFIG_twrpGlobalVars += \
     avb_vbmeta_flags_all_disabled \
     exclude_tzdata \
     exclude_bash \
+    exclude_nano \
     include_repacktools \
     exclude_default_usb_init \
     include_logcat \
@@ -252,7 +251,6 @@ SOONG_CONFIG_twrpGlobalVars_tw_ignore_mt_position_0 := $(TW_IGNORE_MT_POSITION_0
 SOONG_CONFIG_twrpGlobalVars_tw_input_blacklist :=$(subst ",, $(TW_INPUT_BLACKLIST))
 SOONG_CONFIG_twrpGlobalVars_tw_whitelist_input :=$(subst ",, $(TW_WHITELIST_INPUT))
 SOONG_CONFIG_twrpGlobalVars_tw_haptics_tspdrv := $(TW_HAPTICS_TSPDRV)
-SOONG_CONFIG_twrpGlobalVars_tw_exclude_nano := $(TW_EXCLUDE_NANO)
 SOONG_CONFIG_twrpGlobalVars_tw_support_input_aidl_haptics := $(TW_SUPPORT_INPUT_AIDL_HAPTICS)
 SOONG_CONFIG_twrpGlobalVars_tw_support_input_aidl_haptics_fqname := $(subst ",, $(TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME))
 SOONG_CONFIG_twrpGlobalVars_tw_support_input_aidl_haptics_fix_off := $(TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF)
@@ -319,7 +317,6 @@ $(call soong_config_set_bool, twrpGlobalVars, has_edl_mode, $(TW_HAS_EDL_MODE))
 $(call soong_config_set_bool, twrpGlobalVars, no_screen_blank, $(TW_NO_SCREEN_BLANK))
 $(call soong_config_set_bool, twrpGlobalVars, sdext_no_ext4, $(TW_SDEXT_NO_EXT4))
 $(call soong_config_set_bool, twrpGlobalVars, no_haptics, $(TW_NO_HAPTICS))
-$(call soong_config_set_bool, twrpGlobalVars, no_network, $(TW_NO_NETWORK))
 $(call soong_config_set_bool, twrpGlobalVars, use_dmctl, $(TW_USE_DMCTL))
 $(call soong_config_set_bool, twrpGlobalVars, include_7za, $(TW_INCLUDE_7ZA))
 $(call soong_config_set_bool, twrpGlobalVars, include_zstd, $(TW_INCLUDE_ZSTD))
