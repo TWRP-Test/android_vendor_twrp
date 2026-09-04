@@ -72,10 +72,7 @@ $(foreach v,$(EXPORT_TO_SOONG),$(eval $(call addVar,$(v))))
 
 SOONG_CONFIG_NAMESPACES += twrpGlobalVars
 SOONG_CONFIG_twrpGlobalVars += \
-    legacy_hw_disk_encryption \
     target_enforce_ab_ota_partition_list \
-    supports_hw_fde \
-    supports_hw_fde_perf \
     tw_delay_touch_init_ms \
     tw_event_logging \
     tw_use_key_code_touch_sync \
@@ -171,12 +168,6 @@ SOONG_CONFIG_twrpGlobalVars += \
     platform_sdk_version \
     include_wifi
 
-ifeq ($(TARGET_HW_DISK_ENCRYPTION),true)
-SOONG_CONFIG_twrpGlobalVars += \
-    hw_fde_cryptfs_hw_header_lib_name \
-    hw_fde_cryptfs_hw_shared_lib_name
-endif
-
 # Defaults
 TARGET_RECOVERY_OVERSCAN_PERCENT ?= 0
 TW_X_OFFSET ?= 0
@@ -219,9 +210,7 @@ ifeq ($(PRODUCT_USE_DYNAMIC_PARTITIONS), true)
 endif
 
 # Soong bool variables
-SOONG_CONFIG_twrpGlobalVars_legacy_hw_disk_encryption := $(TARGET_LEGACY_HW_DISK_ENCRYPTION)
 SOONG_CONFIG_twrpGlobalVars_target_enforce_ab_ota_partition_list := $(TARGET_ENFORCE_AB_OTA_PARTITION_LIST)
-SOONG_CONFIG_twrpGlobalVars_supports_hw_fde_perf := $(TARGET_HW_DISK_ENCRYPTION_PERF)
 
 SOONG_CONFIG_twrpGlobalVars_tw_delay_touch_init_ms := $(TW_DELAY_TOUCH_INIT_MS)
 SOONG_CONFIG_twrpGlobalVars_tw_event_logging := $(TW_EVENT_LOGGING)
@@ -292,7 +281,6 @@ $(call soong_config_set_bool, twrpGlobalVars, include_resetprop, $(TW_INCLUDE_RE
 $(call soong_config_set_bool, twrpGlobalVars, include_libresetprop, $(TW_INCLUDE_LIBRESETPROP))
 $(call soong_config_set_bool, twrpGlobalVars, include_crypto, $(TW_INCLUDE_CRYPTO))
 $(call soong_config_set_bool, twrpGlobalVars, include_crypto_fbe, $(TW_INCLUDE_CRYPTO_FBE))
-$(call soong_config_set_bool, twrpGlobalVars, supports_hw_fde, $(TARGET_HW_DISK_ENCRYPTION))
 $(call soong_config_set_bool, twrpGlobalVars, ab_ota_updater, $(AB_OTA_UPDATER))
 $(call soong_config_set_bool, twrpGlobalVars, include_lpdump, $(TW_INCLUDE_LPDUMP))
 $(call soong_config_set_bool, twrpGlobalVars, include_lptools, $(TW_INCLUDE_LPTOOLS))
@@ -339,14 +327,6 @@ $(call soong_config_set_bool, twrpGlobalVars, use_logd, $(TARGET_USES_LOGD))
 $(call soong_config_set_bool, twrpGlobalVars, include_ntfs_3g, $(TW_INCLUDE_NTFS_3G))
 $(call soong_config_set_bool, twrpGlobalVars, include_python, $(TW_INCLUDE_PYTHON))
 $(call soong_config_set_bool, twrpGlobalVars, include_wifi, $(TW_INCLUDE_WIFI))
-
-ifneq ($(TARGET_CRYPTFS_HW_PATH),)
-  SOONG_CONFIG_twrpGlobalVars_hw_fde_cryptfs_hw_header_lib_name := //$(TARGET_CRYPTFS_HW_PATH):libcryptfs_hw_headers
-  SOONG_CONFIG_twrpGlobalVars_hw_fde_cryptfs_hw_shared_lib_name := //$(TARGET_CRYPTFS_HW_PATH):libcryptfs_hw
-else
-  SOONG_CONFIG_twrpGlobalVars_hw_fde_cryptfs_hw_header_lib_name := libcryptfs_hw_headers
-  SOONG_CONFIG_twrpGlobalVars_hw_fde_cryptfs_hw_shared_lib_name := libcryptfs_hw
-endif
 
 # Vendor init
 ifneq ($(TARGET_INIT_VENDOR_LIB),)
