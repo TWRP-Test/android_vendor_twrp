@@ -268,12 +268,13 @@ $(call soong_config_set_int, twrpGlobalVars, clock_offset, $(TW_CLOCK_OFFSET))
 
 $(call soong_config_set_int, twrpGlobalVars, platform_sdk_version, $(PLATFORM_SDK_VERSION))
 
-$(call add_soong_config_var, twrpGlobalVars, include_se_omapi)
 ifeq ($(TW_INCLUDE_CRYPTO), true)
     TW_INCLUDE_CRYPTO_FBE := true
     TW_INCLUDE_LIBRESETPROP := true
-    $(call soong_config_set_bool, twrpGlobalVars, include_se_omapi, $(TW_INCLUDE_OMAPI))
+else
+    TW_INCLUDE_OMAPI := false
 endif
+$(call soong_config_set_bool, twrpGlobalVars, include_se_omapi, $(TW_INCLUDE_OMAPI))
 
 $(call soong_config_set_bool, twrpGlobalVars, use_dynamic_partition, $(if $(filter true,$(PRODUCT_USE_DYNAMIC_PARTITIONS)),true,false))
 $(call soong_config_set_bool, twrpGlobalVars, move_recovery_res_to_vendor_boot, $(if $(filter true,$(BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT)),true,false))
