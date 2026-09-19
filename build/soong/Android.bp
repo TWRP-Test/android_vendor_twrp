@@ -386,7 +386,7 @@ twrp {
             cflags: ["-DQCOM_RTC_FIX"]
         },
         default_language: {
-            cflags: ["-DTW_DEFAULT_LANGUAGE=%s"]
+            cflags: ["-DTW_DEFAULT_LANGUAGE=\"%s\""]
         },
         exclude_nano: {
             cflags: ["-DTW_EXCLUDE_NANO"]
