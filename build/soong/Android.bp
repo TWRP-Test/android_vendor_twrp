@@ -79,14 +79,8 @@ soong_config_module_type {
         "tw_h_offset",
         "tw_framerate",
         "target_recovery_overscan_percent",
-        "tw_input_blacklist",
-        //"tw_whitelist_input",
-        "tw_support_input_aidl_haptics_fqname",
-        "device_version",
-        "git_revision",
         "max_brightness",
         "default_brightness",
-        "default_language",
         "platform_sdk_version",
     ],
     bool_variables: [
@@ -243,20 +237,11 @@ twrp {
         tw_ignore_mt_position_0: {
             cflags: ["-DTW_IGNORE_MT_POSITION_0"]
         },
-        tw_input_blacklist: {
-            cflags: ["-DTW_INPUT_BLACKLIST=\"%s\""]
-        },
-        //tw_whitelist_input: {
-            //cflags: ["-DWHITELIST_INPUT=\"%s\""]
-        //},
         tw_haptics_tspdrv: {
             cflags: ["-DTW_HAPTICS_TSPDRV"]
         },
         tw_support_input_aidl_haptics: {
             cflags: ["-DUSE_QTI_AIDL_HAPTICS"]
-        },
-        tw_support_input_aidl_haptics_fqname: {
-            cflags: ["-DUSE_QTI_AIDL_HAPTICS_FQNAME=\"%s\""]
         },
         tw_support_input_aidl_haptics_fix_off: {
             cflags: ["-DUSE_QTI_AIDL_HAPTICS_FIX_OFF"]
@@ -272,12 +257,6 @@ twrp {
         },
         move_recovery_res_to_vendor_boot: {
             cflags: ["-DBOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT"]
-        },
-        device_version: {
-            cflags: ["-DTW_DEVICE_VERSION=\"-%s\""]
-        },
-        git_revision: {
-            cflags: ["-DTW_GIT_REVISION=\"%s\""]
         },
         exclude_apex: {
             cflags: ["-DTW_EXCLUDE_APEX"]
@@ -384,9 +363,6 @@ twrp {
         },
         qcom_rtc_fix: {
             cflags: ["-DQCOM_RTC_FIX"]
-        },
-        default_language: {
-            cflags: ["-DTW_DEFAULT_LANGUAGE=\"%s\""]
         },
         exclude_nano: {
             cflags: ["-DTW_EXCLUDE_NANO"]
